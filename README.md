@@ -1,7 +1,7 @@
 # MD5-Hash-Changer
 C# Application to Change MD5 Hash of any file. It works by appending "null" characters to the end of file.
 
-## 🎉 What's New in V1.1.0 - Enhanced Drag & Drop:
+## 🎉 What's New in V1.3.0 - Enhanced Drag & Drop:
 
 ### ✨ New Features
 - **🎯 Window Centering**: Application now opens in the center of your screen
@@ -33,12 +33,12 @@ C# Application to Change MD5 Hash of any file. It works by appending "null" char
 - Download from [**Release page**](https://github.com/philip47/MD5-Hash-Changer/releases/latest)
 
 ### 📥 Quick Download Links:
-- **[📦 Latest Release (v1.1.0)](https://github.com/philip47/MD5-Hash-Changer/releases/tag/v1.1.0)**
-- **[⬇️ Direct Download - MD5_Hash_Changer.exe](https://github.com/philip47/MD5-Hash-Changer/releases/download/v1.1.0/MD5_Hash_Changer.exe)**
-- **[⚙️ Configuration File](https://github.com/philip47/MD5-Hash-Changer/releases/download/v1.1.0/MD5_Hash_Changer.exe.config)**
+- **[📦 Latest Release (v1.3.0)](https://github.com/philip47/MD5-Hash-Changer/releases/tag/v1.3.0)**
+- **[⬇️ Direct Download - MD5_Hash_Changer_v1.3.0.exe](https://github.com/philip47/MD5-Hash-Changer/releases/download/v1.3.0/MD5_Hash_Changer_v1.3.0.exe)**
+- **[⚙️ Configuration File](https://github.com/philip47/MD5-Hash-Changer/releases/download/v1.3.0/MD5_Hash_Changer_v1.3.0.exe.config)**
 
 ## 🚀 How to Use:
-1. **Download** both `MD5_Hash_Changer.exe` and `MD5_Hash_Changer.exe.config`
+1. **Download** both `MD5_Hash_Changer_v1.3.0.exe` and `MD5_Hash_Changer_v1.3.0.exe.config`
 2. **Place** both files in the same folder
 3. **Run** the executable
 4. **Drag & Drop** files or entire folders to add them to the list
