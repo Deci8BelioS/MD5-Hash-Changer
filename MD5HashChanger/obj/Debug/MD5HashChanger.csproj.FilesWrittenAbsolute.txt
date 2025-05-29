@@ -1,0 +1,8 @@
+/workspace/MD5-Hash-Changer/MD5HashChanger/obj/Debug/.NETFramework,Version=v4.6.2.AssemblyAttribute.cs
+/workspace/MD5-Hash-Changer/MD5HashChanger/obj/Debug/MD5_Hash_Changer.MainForm.resources
+/workspace/MD5-Hash-Changer/MD5HashChanger/obj/Debug/MD5_Hash_Changer.Properties.Resources.resources
+/workspace/MD5-Hash-Changer/MD5HashChanger/bin/Debug/MD5_Hash_Changer.exe.config
+/workspace/MD5-Hash-Changer/MD5HashChanger/bin/Debug/MD5_Hash_Changer.exe.mdb
+/workspace/MD5-Hash-Changer/MD5HashChanger/bin/Debug/MD5_Hash_Changer.exe
+/workspace/MD5-Hash-Changer/MD5HashChanger/obj/Debug/MD5_Hash_Changer.exe
+/workspace/MD5-Hash-Changer/MD5HashChanger/obj/Debug/MD5_Hash_Changer.exe.mdb

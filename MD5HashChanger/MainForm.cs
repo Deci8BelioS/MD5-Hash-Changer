@@ -34,37 +34,58 @@ namespace MD5_Hash_Changer
             totalFiles = 0;
             labelItem.Text = "0";
             labelTotalItem.Text = "0";
+            progressBarStatus.Value = 0;
+            progressBarStatus.Maximum = 1;
         }
 
         private void btnRemoveSelected_Click(object sender, EventArgs e)
         {
-            totalFiles -= dataGridFileMD5.SelectedRows.Count;
+            int removedCount = dataGridFileMD5.SelectedRows.Count;
             foreach (DataGridViewRow row in dataGridFileMD5.SelectedRows)
             {
                 dataGridFileMD5.Rows.RemoveAt(row.Index);
             }
             dataGridFileMD5.ClearSelection();
+            totalFiles = dataGridFileMD5.RowCount;
             labelItem.Text = "0";
-            labelTotalItem.Text = dataGridFileMD5.RowCount.ToString();
+            labelTotalItem.Text = totalFiles.ToString();
+            progressBarStatus.Maximum = totalFiles > 0 ? totalFiles : 1;
+            progressBarStatus.Value = 0;
         }
         private void Additem(Dictionary<string, int> filesToCheck)
         {
             Thread threading = new Thread(() =>
             {
-                int index = 0;
+                int processedCount = 0;
                 int maxThread = filesToCheck.Count > Environment.ProcessorCount ? Environment.ProcessorCount : filesToCheck.Count;
                 Parallel.ForEach(filesToCheck, new ParallelOptions { MaxDegreeOfParallelism = maxThread }, item =>
                 {
-                    string md5hash = GetMD5Hash(item.Key);
-                    this.Invoke((MethodInvoker)delegate ()
+                    try
                     {
-                        this.labelItem.Text = index.ToString();
-                        this.progressBarStatus.Value = index;
-                        this.dataGridFileMD5.Rows[item.Value].SetValues(new object[] { item.Key, md5hash, "", "idle" });
-                        this.dataGridFileMD5.Rows[0].Selected = false;
-                    });
+                        string md5hash = GetMD5Hash(item.Key);
+                        int currentCount = Interlocked.Increment(ref processedCount);
+                        this.Invoke((MethodInvoker)delegate ()
+                        {
+                            this.labelItem.Text = currentCount.ToString();
+                            this.progressBarStatus.Value = Math.Min(currentCount, this.progressBarStatus.Maximum);
+                            this.dataGridFileMD5.Rows[item.Value].SetValues(new object[] { item.Key, md5hash, "", "idle" });
+                            if (this.dataGridFileMD5.Rows.Count > 0)
+                                this.dataGridFileMD5.Rows[0].Selected = false;
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        int currentCount = Interlocked.Increment(ref processedCount);
+                        this.Invoke((MethodInvoker)delegate ()
+                        {
+                            this.labelItem.Text = currentCount.ToString();
+                            this.progressBarStatus.Value = Math.Min(currentCount, this.progressBarStatus.Maximum);
+                            this.dataGridFileMD5.Rows[item.Value].SetValues(new object[] { item.Key, "Error: " + ex.Message, "", "Error" });
+                            if (this.dataGridFileMD5.Rows.Count > 0)
+                                this.dataGridFileMD5.Rows[0].Selected = false;
+                        });
+                    }
                 });
-                //threading.Abort();
             })
             {
                 IsBackground = true
@@ -101,12 +122,33 @@ namespace MD5_Hash_Changer
             if (fbd.ShowDialog(this.Handle) == true)
             {
                 var filesToCheck = new Dictionary<string, int>();
-                foreach (string filename in Directory.GetFiles(fbd.ResultPath))
+                try
                 {
-                    int rowIndex = this.dataGridFileMD5.Rows.Add(new object[] { filename, "Processing...", "", "idle" });
-                    filesToCheck[filename] = rowIndex;
+                    string[] filesInDirectory = Directory.GetFiles(fbd.ResultPath, "*", SearchOption.AllDirectories);
+                    foreach (string filename in filesInDirectory)
+                    {
+                        int rowIndex = this.dataGridFileMD5.Rows.Add(new object[] { filename, "Processing...", "", "idle" });
+                        filesToCheck[filename] = rowIndex;
+                    }
+                    
+                    if (filesToCheck.Count > 0)
+                    {
+                        totalFiles += filesToCheck.Count;
+                        labelItem.Text = "0";
+                        labelTotalItem.Text = totalFiles.ToString();
+                        progressBarStatus.Value = 0;
+                        progressBarStatus.Maximum = totalFiles;
+                        Additem(filesToCheck);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No files found in the selected directory.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
-                Additem(filesToCheck);
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error accessing directory: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -157,39 +199,56 @@ namespace MD5_Hash_Changer
                      });
                      state.Break();
                  }
-                 int byteLength = random.Next(randomByteLength[0], randomByteLength[1]);
-                 byte[] extraByte = new byte[byteLength];
-                 for (int j = 0; j < byteLength; j++)
+                 
+                 try
                  {
-                     extraByte[j] = (byte)0;
-                 }
-                 long fileSize = new FileInfo(fileNames[index]).Length;
-                 if (fileSize == 0L)
-                 {
-                     this.Invoke((MethodInvoker)delegate ()
+                     int byteLength = random.Next(randomByteLength[0], randomByteLength[1]);
+                     byte[] extraByte = new byte[byteLength];
+                     for (int j = 0; j < byteLength; j++)
                      {
-                         this.dataGridFileMD5.Rows[index].Cells[3].Value = "Empty";
-                     });
-                 }
-                 else
-                 {
-                     using (FileStream fileStream = new FileStream(fileNames[index], FileMode.Append))
-                     {
-                         fileStream.Write(extraByte, 0, extraByte.Length);
+                         extraByte[j] = (byte)0;
                      }
-                     string md5hash = GetMD5Hash(fileNames[index]);
+                     long fileSize = new FileInfo(fileNames[index]).Length;
+                     if (fileSize == 0L)
+                     {
+                         int progress = Interlocked.Increment(ref currentProgress);
+                         this.Invoke((MethodInvoker)delegate ()
+                         {
+                             this.labelItem.Text = progress.ToString();
+                             this.progressBarStatus.Value = Math.Min(progress, this.progressBarStatus.Maximum);
+                             this.dataGridFileMD5.Rows[index].Cells[3].Value = "Empty";
+                         });
+                     }
+                     else
+                     {
+                         using (FileStream fileStream = new FileStream(fileNames[index], FileMode.Append))
+                         {
+                             fileStream.Write(extraByte, 0, extraByte.Length);
+                         }
+                         string md5hash = GetMD5Hash(fileNames[index]);
+                         int progress = Interlocked.Increment(ref currentProgress);
+                         this.Invoke((MethodInvoker)delegate ()
+                         {
+                             bool flag2 = this.dataGridFileMD5.Rows[index].Cells[2].Value.ToString() != "";
+                             if (flag2)
+                             {
+                                 this.dataGridFileMD5.Rows[index].Cells[1].Value = this.dataGridFileMD5.Rows[index].Cells[2].Value;
+                             }
+                             this.labelItem.Text = progress.ToString();
+                             this.progressBarStatus.Value = Math.Min(progress, this.progressBarStatus.Maximum);
+                             this.dataGridFileMD5.Rows[index].Cells[2].Value = md5hash;
+                             this.dataGridFileMD5.Rows[index].Cells[3].Value = "OK";
+                         });
+                     }
+                 }
+                 catch (Exception ex)
+                 {
+                     int progress = Interlocked.Increment(ref currentProgress);
                      this.Invoke((MethodInvoker)delegate ()
                      {
-                         bool flag2 = this.dataGridFileMD5.Rows[index].Cells[2].Value.ToString() != "";
-                         if (flag2)
-                         {
-                             this.dataGridFileMD5.Rows[index].Cells[1].Value = this.dataGridFileMD5.Rows[index].Cells[2].Value;
-                         }
-                         currentProgress++;
-                         this.labelItem.Text = (currentProgress).ToString();
-                         this.progressBarStatus.Value = currentProgress;
-                         this.dataGridFileMD5.Rows[index].Cells[2].Value = md5hash;
-                         this.dataGridFileMD5.Rows[index].Cells[3].Value = "OK";
+                         this.labelItem.Text = progress.ToString();
+                         this.progressBarStatus.Value = Math.Min(progress, this.progressBarStatus.Maximum);
+                         this.dataGridFileMD5.Rows[index].Cells[3].Value = "Error: " + ex.Message;
                      });
                  }
              });
@@ -321,27 +380,63 @@ namespace MD5_Hash_Changer
 
         private void MainForm_DragDrop(object sender, DragEventArgs e)
         {
-            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            totalFiles += files.Length;
+            string[] droppedItems = (string[])e.Data.GetData(DataFormats.FileDrop);
             var filesToCheck = new Dictionary<string, int>();
-            foreach (string filename in files)
+            int addedFiles = 0;
+
+            foreach (string item in droppedItems)
             {
-                int rowIndex = dataGridFileMD5.Rows.Add(new object[] { filename, "checking", "", "idle" });
-                filesToCheck[filename] = rowIndex;
-                //System.Diagnostics.Debug.WriteLine(filename + ":" + rowIndex.ToString());
+                if (File.Exists(item))
+                {
+                    // It's a file
+                    int rowIndex = dataGridFileMD5.Rows.Add(new object[] { item, "Processing...", "", "idle" });
+                    filesToCheck[item] = rowIndex;
+                    addedFiles++;
+                }
+                else if (Directory.Exists(item))
+                {
+                    // It's a directory - add all files from it
+                    try
+                    {
+                        string[] filesInDirectory = Directory.GetFiles(item, "*", SearchOption.AllDirectories);
+                        foreach (string filename in filesInDirectory)
+                        {
+                            int rowIndex = dataGridFileMD5.Rows.Add(new object[] { filename, "Processing...", "", "idle" });
+                            filesToCheck[filename] = rowIndex;
+                            addedFiles++;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error accessing directory {item}: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
             }
-            Additem(filesToCheck);
+
+            if (addedFiles > 0)
+            {
+                totalFiles += addedFiles;
+                labelItem.Text = "0";
+                labelTotalItem.Text = totalFiles.ToString();
+                progressBarStatus.Value = 0;
+                progressBarStatus.Maximum = totalFiles;
+                Additem(filesToCheck);
+            }
         }
 
         private void dataGridFileMD5_KeyUp(object sender, KeyEventArgs e)
         {
-
             if (e.KeyValue == (char)Keys.Delete)
             {
                 foreach (DataGridViewRow row in dataGridFileMD5.SelectedRows)
                 {
                     dataGridFileMD5.Rows.RemoveAt(row.Index);
                 }
+                totalFiles = dataGridFileMD5.RowCount;
+                labelItem.Text = "0";
+                labelTotalItem.Text = totalFiles.ToString();
+                progressBarStatus.Maximum = totalFiles > 0 ? totalFiles : 1;
+                progressBarStatus.Value = 0;
             }
         }
 
@@ -351,6 +446,11 @@ namespace MD5_Hash_Changer
             {
                 dataGridFileMD5.Rows.RemoveAt(row.Index);
             }
+            totalFiles = dataGridFileMD5.RowCount;
+            labelItem.Text = "0";
+            labelTotalItem.Text = totalFiles.ToString();
+            progressBarStatus.Maximum = totalFiles > 0 ? totalFiles : 1;
+            progressBarStatus.Value = 0;
         }
     }
 }
