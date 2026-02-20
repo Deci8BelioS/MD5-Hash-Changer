@@ -1,7 +1,35 @@
 # MD5-Hash-Changer
 C# Application to Change MD5 Hash of any file. It works by appending "null" characters to the end of file.
 
-## 🎉 What's New in V1.3.0 - Enhanced Drag & Drop:
+## 🎉 What's New in V1.4.0
+
+| Change | Details |
+|--------|---------|
+| **.NET 8 Migration** | From .NET Framework 4.6.2 to .NET 8.0-windows (SDK-style project) |
+| **MD5 on Start Only** | Removed MD5 computation when adding files. Now shows "waiting" until "Start Change MD5" |
+| **Sequential Processing** | Single-threaded file processing (removed Parallel.For) |
+| **Spanish Localization** | Complete UI translation (buttons, headers, statuses) |
+| **Drag & Drop Optimized** | Adds files to list instantly without MD5 computation |
+
+## **note**: I removed the MD5 hash check when dragging or adding, since if I loaded a large TV series it took quite a long time to finish reading the hashes. Now it reads them one by one when I click on start MD5 change.
+
+## Performance
+- UI responsive with 1000+ files
+- ~2MB single-file executable (no self-contained)
+
+## Compatibility
+- .NET 8 Desktop Runtime required
+- All original features preserved (CSV export, context menu, etc.)
+- Multi-file/folder selection
+- Export CSV and copy rows to clipboard
+- Context menu (open file, delete rows)
+- Delete key to remove rows
+- Native FolderPicker with multi-folder selection
+- Progress bar with visual statuses
+
+![md5-hash-changer](https://github.com/ewwink/MD5-Hash-Changer/blob/master/screenshoot.png?raw=true)
+
+## Previous Features V1.3.0:
 
 ### ✨ New Features
 - **🎯 Window Centering**: Application now opens in the center of your screen
@@ -51,5 +79,3 @@ C# Application to Change MD5 Hash of any file. It works by appending "null" char
 - **Mixed Content**: Drag a combination of files and folders in one operation
 - **Nested Folders**: Automatically processes all subdirectories
 
-
-![md5-hash-changer](https://github.com/ewwink/MD5-Hash-Changer/blob/master/screenshoot.jpg?raw=true)
