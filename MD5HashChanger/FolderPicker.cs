@@ -11,7 +11,6 @@ namespace MD5_Hash_Changer
     {
         private readonly List<string> _resultPaths = new List<string>();
         private readonly List<string> _resultNames = new List<string>();
-
         public IReadOnlyList<string> ResultPaths => _resultPaths;
         public IReadOnlyList<string> ResultNames => _resultNames;
         public string ResultPath => ResultPaths.FirstOrDefault();
@@ -29,7 +28,6 @@ namespace MD5_Hash_Changer
             {
                 options |= (int)FOS.FOS_FORCEFILESYSTEM;
             }
-
             if (Multiselect)
             {
                 options |= (int)FOS.FOS_ALLOWMULTISELECT;
@@ -37,7 +35,6 @@ namespace MD5_Hash_Changer
             return options;
         }
 
-        // for all .NET
         public virtual bool? ShowDialog(IntPtr owner, bool throwOnError = false)
         {
             var dialog = (IFileOpenDialog)new FileOpenDialog();
@@ -45,29 +42,23 @@ namespace MD5_Hash_Changer
             {
                 if (CheckHr(SHCreateItemFromParsingName(InputPath, null, typeof(IShellItem).GUID, out var item), throwOnError) != 0)
                     return null;
-
                 dialog.SetFolder(item);
             }
-
             var options = FOS.FOS_PICKFOLDERS;
             options = (FOS)SetOptions((int)options);
             dialog.SetOptions(options);
-
             if (Title != null)
             {
                 dialog.SetTitle(Title);
             }
-
             if (OkButtonLabel != null)
             {
                 dialog.SetOkButtonLabel(OkButtonLabel);
             }
-
             if (FileNameLabel != null)
             {
                 dialog.SetFileName(FileNameLabel);
             }
-
             if (owner == IntPtr.Zero)
             {
                 owner = Process.GetCurrentProcess().MainWindowHandle;
@@ -76,17 +67,13 @@ namespace MD5_Hash_Changer
                     owner = GetDesktopWindow();
                 }
             }
-
             var hr = dialog.Show(owner);
             if (hr == ERROR_CANCELLED)
                 return null;
-
             if (CheckHr(hr, throwOnError) != 0)
                 return null;
-
             if (CheckHr(dialog.GetResults(out var items), throwOnError) != 0)
                 return null;
-
             items.GetCount(out var count);
             for (var i = 0; i < count; i++)
             {
@@ -114,21 +101,21 @@ namespace MD5_Hash_Changer
         [DllImport("user32")]
         private static extern IntPtr GetDesktopWindow();
 
-#pragma warning disable IDE1006 // Naming Styles
+#pragma warning disable IDE1006
         private const int ERROR_CANCELLED = unchecked((int)0x800704C7);
-#pragma warning restore IDE1006 // Naming Styles
 
-        [ComImport, Guid("DC1C5A9C-E88A-4dde-A5A1-60F82A20AEF7")] // CLSID_FileOpenDialog
+#pragma warning restore IDE1006
+        [ComImport, Guid("DC1C5A9C-E88A-4dde-A5A1-60F82A20AEF7")]
         private class FileOpenDialog { }
 
         [ComImport, Guid("d57c7288-d4ad-4768-be02-9d969532d960"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
         private interface IFileOpenDialog
         {
-            [PreserveSig] int Show(IntPtr parent); // IModalWindow
-            [PreserveSig] int SetFileTypes();  // not fully defined
+            [PreserveSig] int Show(IntPtr parent);
+            [PreserveSig] int SetFileTypes();
             [PreserveSig] int SetFileTypeIndex(int iFileType);
             [PreserveSig] int GetFileTypeIndex(out int piFileType);
-            [PreserveSig] int Advise(); // not fully defined
+            [PreserveSig] int Advise();
             [PreserveSig] int Unadvise();
             [PreserveSig] int SetOptions(FOS fos);
             [PreserveSig] int GetOptions(out FOS pfos);
@@ -145,7 +132,7 @@ namespace MD5_Hash_Changer
             [PreserveSig] int AddPlace(IShellItem psi, int alignment);
             [PreserveSig] int SetDefaultExtension([MarshalAs(UnmanagedType.LPWStr)] string pszDefaultExtension);
             [PreserveSig] int Close(int hr);
-            [PreserveSig] int SetClientGuid();  // not fully defined
+            [PreserveSig] int SetClientGuid(); 
             [PreserveSig] int ClearClientData();
             [PreserveSig] int SetFilter([MarshalAs(UnmanagedType.IUnknown)] object pFilter);
             [PreserveSig] int GetResults(out IShellItemArray ppenum);
@@ -155,26 +142,26 @@ namespace MD5_Hash_Changer
         [ComImport, Guid("43826D1E-E718-42EE-BC55-A1E261C37BFE"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
         private interface IShellItem
         {
-            [PreserveSig] int BindToHandler(); // not fully defined
-            [PreserveSig] int GetParent(); // not fully defined
+            [PreserveSig] int BindToHandler();
+            [PreserveSig] int GetParent();
             [PreserveSig] int GetDisplayName(SIGDN sigdnName, [MarshalAs(UnmanagedType.LPWStr)] out string ppszName);
-            [PreserveSig] int GetAttributes();  // not fully defined
-            [PreserveSig] int Compare();  // not fully defined
+            [PreserveSig] int GetAttributes(); 
+            [PreserveSig] int Compare(); 
         }
 
         [ComImport, Guid("b63ea76d-1f85-456f-a19c-48159efa858b"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
         private interface IShellItemArray
         {
-            [PreserveSig] int BindToHandler();  // not fully defined
-            [PreserveSig] int GetPropertyStore();  // not fully defined
-            [PreserveSig] int GetPropertyDescriptionList();  // not fully defined
-            [PreserveSig] int GetAttributes();  // not fully defined
+            [PreserveSig] int BindToHandler(); 
+            [PreserveSig] int GetPropertyStore(); 
+            [PreserveSig] int GetPropertyDescriptionList(); 
+            [PreserveSig] int GetAttributes(); 
             [PreserveSig] int GetCount(out int pdwNumItems);
             [PreserveSig] int GetItemAt(int dwIndex, out IShellItem ppsi);
-            [PreserveSig] int EnumItems();  // not fully defined
+            [PreserveSig] int EnumItems(); 
         }
 
-#pragma warning disable CA1712 // Do not prefix enum values with type name
+#pragma warning disable CA1712
         private enum SIGDN : uint
         {
             SIGDN_DESKTOPABSOLUTEEDITING = 0x8004c000,
@@ -187,7 +174,6 @@ namespace MD5_Hash_Changer
             SIGDN_PARENTRELATIVEPARSING = 0x80018001,
             SIGDN_URL = 0x80068000
         }
-
         [Flags]
         private enum FOS
         {
@@ -215,6 +201,6 @@ namespace MD5_Hash_Changer
             FOS_FORCEPREVIEWPANEON = 0x40000000,
             FOS_SUPPORTSTREAMABLEITEMS = unchecked((int)0x80000000)
         }
-#pragma warning restore CA1712 // Do not prefix enum values with type name
+#pragma warning restore CA1712
     }
 }
