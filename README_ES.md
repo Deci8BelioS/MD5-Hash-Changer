@@ -42,7 +42,7 @@
 [![Latest Release](https://img.shields.io/github/v/release/Deci8BelioS/MD5-Hash-Changer?color=brightgreen)](https://github.com/Deci8BelioS/MD5-Hash-Changer/releases/latest)
 
 ## 🎮 Uso rápido
-1. **Descarga** `MD5_Hash_Changer.exe`
+1. **Descarga** [MD5_Hash_Changer.exe](https://github.com/Deci8BelioS/MD5-Hash-Changer/releases/download/v1.4.1/MD5_Hash_Changer.exe)
 2. **Ejecuta** 
 3. **Arrastra** archivos/carpetas
 4. **Iniciar Cambio MD5** → ✅
