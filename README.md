@@ -27,7 +27,7 @@ C# Application to Change MD5 Hash of any file. It works by appending "null" char
 - Native FolderPicker with multi-folder selection
 - Progress bar with visual statuses
 
-![md5-hash-changer](https://github.com/ewwink/MD5-Hash-Changer/blob/master/screenshoot.png?raw=true)
+![md5-hash-changer](https://github.com/Deci8BelioS/MD5-Hash-Changer/blob/fix-drag-drop-and-center-window/screenshoot.png?raw=true)
 
 ## Previous Features V1.3.0:
 
