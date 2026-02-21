@@ -1,81 +1,62 @@
-# MD5-Hash-Changer
-C# Application to Change MD5 Hash of any file. It works by appending "null" characters to the end of file.
+# MD5 Hash Changer v1.4.1
+<div align="right">
 
-## 🎉 What's New in V1.4.0
+[**Spanish**](README_ES.md)
 
-| Change | Details |
-|--------|---------|
-| **.NET 8 Migration** | From .NET Framework 4.6.2 to .NET 8.0-windows (SDK-style project) |
-| **MD5 on Start Only** | Removed MD5 computation when adding files. Now shows "waiting" until "Start Change MD5" |
-| **Sequential Processing** | Single-threaded file processing (removed Parallel.For) |
-| **Spanish Localization** | Complete UI translation (buttons, headers, statuses) |
-| **Drag & Drop Optimized** | Adds files to list instantly without MD5 computation |
-| **Dark Mode** | The interface is now in dark mode |
-## **note**: I removed the MD5 hash check when dragging or adding, since if I loaded a large TV series it took quite a long time to finish reading the hashes. Now it reads them one by one when I click on start MD5 change.
+</div>
 
-## Performance
-- UI responsive with 1000+ files
-- ~2MB single-file executable (no self-contained)
+![Screenshot](https://github.com/Deci8BelioS/MD5-Hash-Changer/blob/fix-drag-drop-and-center-window/screenshoot.png?raw=true)
 
-## Compatibility
-- .NET 8 Desktop Runtime required
-- All original features preserved (CSV export, context menu, etc.)
-- Multi-file/folder selection
-- Export CSV and copy rows to clipboard
-- Context menu (open file, delete rows)
-- Delete key to remove rows
-- Native FolderPicker with multi-folder selection
-- Progress bar with visual statuses
+**Change MD5 hash of any file** by appending null bytes. Perfect for series/movies blocked by hash checking.
 
-![md5-hash-changer](https://github.com/Deci8BelioS/MD5-Hash-Changer/blob/fix-drag-drop-and-center-window/screenshoot.png?raw=true)
+## 🚀 What's New in v1.4.x
 
-## Previous Features V1.3.0:
+| ✅ **New** | Description |
+|-----------|-------------|
+| **.NET 8** | Migrated from .NET Framework 4.6 → .NET 8 (faster/lighter) |
+| **Dark Mode** | Complete dark theme UI |
+| **Spanish** | Full translation (buttons/menus/statuses) |
+| **MD5 on Start** | No computation when adding (shows "waiting") → **much faster** |
+| **Sequential** | Single-file processing (stable) |
+| **Multi-language** | ES/EN + auto-detects system language |
+| **Rounded ComboBox** | Language selector with dark style |
+| **Multilingual Support** | Spanish and English available |
 
-### ✨ New Features
-- **🎯 Window Centering**: Application now opens in the center of your screen
-- **📁 Enhanced Drag & Drop**: Drop both files AND folders with full support
-- **🔄 Recursive Folder Processing**: Automatically processes all files in dropped folders and subfolders
-- **🎛️ Mixed Content Support**: Drop a combination of files and folders simultaneously
+> **💡 Note**: Removed MD5 calculation on drag/add. Large series took **minutes**. Now computes only on "Start MD5 Change".
 
-### 🔧 Improvements
-- **⚡ Thread Safety**: Fixed progress counters with thread-safe operations using `Interlocked.Increment`
-- **🛡️ Error Handling**: Better error messages and graceful failure handling for file access issues
-- **📊 UI Consistency**: Improved progress tracking and counter updates across all operations
-- **🚀 Performance**: More efficient file processing and memory usage
+## ⚡ Performance
+- **1000+ files**: Responsive UI
+- **~2MB** single executable
+- **Instant Drag & Drop**
 
-### 🐛 Bug Fixes
-- Fixed progress bar updates during file operations
-- Improved bounds checking for progress values
-- Better file existence and directory access checks
-- Consistent file counter updates in all removal operations
+## 📱 Features
+* Drag files/folders (recursive)
+* Native FolderPicker
+* CSV export + copy rows
+* Context menu (open/delete)
+* DELETE key to remove rows
+* Progress bar + visual statuses
+* Centered window + minimum size
 
-## Previous Features (V1.2):
-- Low Memory usage for checking large files
-- Parallel Processing
-- Basic Drag & Drop File support
-- Select Folder functionality
+## 💻 Requirements
+- **Windows 10/11** ([.NET 8 included](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-8.0.24-windows-x64-installer))
+- **~2MB** space
 
-## 📋 System Requirements & Download
-- **.NET Framework 4.6.2** (Windows 10/11 built-in)
-- **Windows 7/8/10/11** compatible
-- Download from [**Release page**](https://github.com/philip47/MD5-Hash-Changer/releases/latest)
+## 📥 Download
+[![Latest Release](https://img.shields.io/github/v/release/Deci8BelioS/MD5-Hash-Changer?color=brightgreen)](https://github.com/Deci8BelioS/MD5-Hash-Changer/releases/latest)
 
-### 📥 Quick Download Links:
-- **[📦 Latest Release (v1.3.0)](https://github.com/philip47/MD5-Hash-Changer/releases/tag/v1.3.0)**
-- **[⬇️ Direct Download - MD5_Hash_Changer_v1.3.0.exe](https://github.com/philip47/MD5-Hash-Changer/releases/download/v1.3.0/MD5_Hash_Changer_v1.3.0.exe)**
-- **[⚙️ Configuration File](https://github.com/philip47/MD5-Hash-Changer/releases/download/v1.3.0/MD5_Hash_Changer_v1.3.0.exe.config)**
+## 🎮 Quick Start
+1. **Download** `MD5_Hash_Changer.exe`
+2. **Run**
+3. **Drag** files/folders
+4. **Start MD5 Change** → ✅
 
-## 🚀 How to Use:
-1. **Download** both `MD5_Hash_Changer_v1.3.0.exe` and `MD5_Hash_Changer_v1.3.0.exe.config`
-2. **Place** both files in the same folder
-3. **Run** the executable
-4. **Drag & Drop** files or entire folders to add them to the list
-5. **Process** files to change their MD5 hashes
+## 📁 Forked from
+Based on [ewwink/MD5-Hash-Changer](https://github.com/ewwink/MD5-Hash-Changer)
 
-## 🎯 Enhanced Drag & Drop Features:
-- **Single Files**: Drag individual files to add them
-- **Multiple Files**: Select and drag multiple files at once
-- **Folders**: Drag entire folders to recursively add all contained files
-- **Mixed Content**: Drag a combination of files and folders in one operation
-- **Nested Folders**: Automatically processes all subdirectories
-
+### Previous Changelog
+**V1.3 →**
+* Enhanced Drag&Drop + centering
+* Drag **files + folders** simultaneously
+* **Recursive** subfolder processing
+* **Thread-safe** counters
