@@ -1,4 +1,9 @@
 # MD5 Hash Changer v1.4.1
+<div align="right">
+
+[**English**](README.md)
+
+</div>
 
 ![Screenshot](https://github.com/Deci8BelioS/MD5-Hash-Changer/blob/fix-drag-drop-and-center-window/screenshoot.png?raw=true)
 
@@ -48,7 +53,7 @@
 4. **Iniciar Cambio MD5** → ✅
 
 ## 📁 Fork de
-Basado en [ewwink/MD5-Hash-Changer](https://github.com/ewwink/MD5-Hash-Changer)
+Basado en [philip47/MD5-Hash-Changer](https://github.com/philip47/MD5-Hash-Changer)
 
 ### Changelog anterior
 V1.3 → 
