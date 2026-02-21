@@ -10,7 +10,7 @@ C# Application to Change MD5 Hash of any file. It works by appending "null" char
 | **Sequential Processing** | Single-threaded file processing (removed Parallel.For) |
 | **Spanish Localization** | Complete UI translation (buttons, headers, statuses) |
 | **Drag & Drop Optimized** | Adds files to list instantly without MD5 computation |
-
+| **Dark Mode** | The interface is now in dark mode |
 ## **note**: I removed the MD5 hash check when dragging or adding, since if I loaded a large TV series it took quite a long time to finish reading the hashes. Now it reads them one by one when I click on start MD5 change.
 
 ## Performance
