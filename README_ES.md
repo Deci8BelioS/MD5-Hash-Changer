@@ -1,4 +1,4 @@
-# MD5 Hash Changer v1.4.1
+# MD5 Hash Changer v1.4.2
 <div align="right">
 
 [**English**](README.md)
@@ -21,7 +21,7 @@
 | **Multi-idioma** | ES/EN + detecta idioma del SO automáticamente |
 | **ComboBox redondeado** | Selector idiomas con estilo dark |
 | **Soporte multilingüe** | Idiomas disponibles Español e Ingles |
-
+| **Nueva lógica MD5** | Ahora calcula los bytes a escribir a final del archivo. |
 > **💡 Nota**: Quité cálculo MD5 al arrastrar/añadir. Con series grandes tardaba **minutos**. Ahora calcula solo al pulsar "Iniciar".
 
 ## ⚡ Rendimiento
@@ -35,8 +35,8 @@
 * Añadir carpeta (FolderPicker nativo)
 * Exportar CSV + copiar filas
 * Menú contextual (abrir/borrar)
-* Tecla DELETE para borrar filas
-* Progress bar + estados visuales
+* Tecla SUPRIMIR para borrar filas
+* Barra de progreso + estados visuales
 * Ventana centrada + tamaño mínimo
 
 ## 💻 Requisitos
@@ -47,7 +47,7 @@
 [![Latest Release](https://img.shields.io/github/v/release/Deci8BelioS/MD5-Hash-Changer?color=brightgreen)](https://github.com/Deci8BelioS/MD5-Hash-Changer/releases/latest)
 
 ## 🎮 Uso rápido
-1. **Descarga** [MD5_Hash_Changer.exe](https://github.com/Deci8BelioS/MD5-Hash-Changer/releases/download/v1.4.1/MD5_Hash_Changer.exe)
+1. **Descarga** [MD5_Hash_Changer.exe](https://github.com/Deci8BelioS/MD5-Hash-Changer/releases/download/1.4.2/MD5_Hash_Changer.exe)
 2. **Ejecuta** 
 3. **Arrastra** archivos/carpetas
 4. **Iniciar Cambio MD5** → ✅
