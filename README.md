@@ -7,7 +7,7 @@
 
 ![Screenshot](https://github.com/Deci8BelioS/MD5-Hash-Changer/blob/fix-drag-drop-and-center-window/screenshoot.png?raw=true)
 
-**Change MD5 hash of any file** by appending null bytes. Perfect for series/movies blocked by hash checking.
+**Change the MD5 hash** of any file by adding calculated bytes to the end. Ideal for series/movies blocked by hash.
 
 ## 🚀 What's New in v1.4.x
 
