@@ -5,7 +5,7 @@
 
 </div>
 
-![Screenshot](https://github.com/Deci8BelioS/MD5-Hash-Changer/blob/fix-drag-drop-and-center-window/screenshoot.png?raw=true)
+![Screenshot](https://github.com/Deci8BelioS/MD5-Hash-Changer/blob/main/screenshoot.png?raw=true)
 
 **Change the MD5 hash** of any file by adding calculated bytes to the end. Ideal for series/movies blocked by hash.
 
