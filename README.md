@@ -21,7 +21,7 @@
 | **Multi-language** | ES/EN + auto-detects system language |
 | **Rounded ComboBox** | Language selector with dark style |
 | **Multilingual Support** | Spanish and English available |
-| **New logic in MD5** | Change now calculates the bytes to write at the end of the file |
+| **New logic MD5** | Change now calculates the bytes to write at the end of the file |
 
 > **💡 Note**: Removed MD5 calculation on drag/add. Large series took **minutes**. Now computes only on "Start MD5 Change".
 
