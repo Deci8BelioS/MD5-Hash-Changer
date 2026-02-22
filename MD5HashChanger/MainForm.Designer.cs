@@ -20,11 +20,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.btnStartMD5 = new MD5_Hash_Changer.RoundedButton();
-            this.btnAddFiles = new MD5_Hash_Changer.RoundedButton();
-            this.btnAddFolder = new MD5_Hash_Changer.RoundedButton();
-            this.btnRemoveSelected = new MD5_Hash_Changer.RoundedButton();
-            this.btnRemoveAll = new MD5_Hash_Changer.RoundedButton();
+            this.btnStartMD5 = new MD5_Hash_Changer.UI.RoundedButton();
+            this.btnAddFiles = new MD5_Hash_Changer.UI.RoundedButton();
+            this.btnAddFolder = new MD5_Hash_Changer.UI.RoundedButton();
+            this.btnRemoveSelected = new MD5_Hash_Changer.UI.RoundedButton();
+            this.btnRemoveAll = new MD5_Hash_Changer.UI.RoundedButton();
             this.dataGridFileMD5 = new System.Windows.Forms.DataGridView();
             this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.oldMD5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -291,7 +291,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MD5 Hash Changer V1.4.0";
+            this.Text = "MD5 Hash Changer V1.4.2";
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridFileMD5)).EndInit();
@@ -316,11 +316,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn newMD5;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
         private System.Windows.Forms.ToolStripMenuItem contextMenuExportToCSV;
-        private RoundedButton btnRemoveAll;
-        private RoundedButton btnRemoveSelected;
-        private RoundedButton btnStartMD5;
-        private RoundedButton btnAddFiles;
-        private RoundedButton btnAddFolder;
+        private MD5_Hash_Changer.UI.RoundedButton btnRemoveAll;
+        private MD5_Hash_Changer.UI.RoundedButton btnRemoveSelected;
+        private MD5_Hash_Changer.UI.RoundedButton btnStartMD5;
+        private MD5_Hash_Changer.UI.RoundedButton btnAddFiles;
+        private MD5_Hash_Changer.UI.RoundedButton btnAddFolder;
         private System.Windows.Forms.ToolStripMenuItem contextMenuDeleteRows;
     }
 }

@@ -1,4 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
@@ -9,14 +10,31 @@
     <RootNamespace>MD5_Hash_Changer</RootNamespace>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <Platforms>AnyCPU</Platforms>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <NoWarn>CA1416</NoWarn>
+    <Version>1.4.2.0</Version>
+    <FileVersion>1.4.2.0</FileVersion>
+    <AssemblyVersion>1.4.2.0</AssemblyVersion>
+    <Title>MD5 Hash Changer</Title>
+    <Description>MD5 Hash Changer Tool</Description>
+    <Authors>ewwink</Authors>
+    <Company>ewwink</Company>
+    <Product>MD5 Hash Changer</Product>
+    <Copyright>Copyright © ewwink 2017</Copyright>
+    <RepositoryUrl>https://github.com/ewwink/MD5-Hash-Changer</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="icon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Lang\Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Lang\Strings.es.resx">
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>
-

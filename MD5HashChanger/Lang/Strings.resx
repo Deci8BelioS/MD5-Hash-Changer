@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="BtnAddFiles" xml:space="preserve">
+        <value>Add&#10;Files</value>
+    </data>
+    <data name="BtnAddFolder" xml:space="preserve">
+        <value>Add&#10;Folder</value>
+    </data>
+    <data name="BtnRemoveSelected" xml:space="preserve">
+        <value>Remove&#10;Selected</value>
+    </data>
+    <data name="BtnRemoveAll" xml:space="preserve">
+        <value>Clear&#10;List</value>
+    </data>
+    <data name="BtnStart" xml:space="preserve">
+        <value>Start&#10;MD5 Change</value>
+    </data>
+    <data name="BtnStop" xml:space="preserve">
+        <value>Stop</value>
+    </data>
+    <data name="ColFileName" xml:space="preserve">
+        <value>File Name</value>
+    </data>
+    <data name="ColOldMD5" xml:space="preserve">
+        <value>Old MD5</value>
+    </data>
+    <data name="ColNewMD5" xml:space="preserve">
+        <value>New MD5</value>
+    </data>
+    <data name="ColStatus" xml:space="preserve">
+        <value>Status</value>
+    </data>
+    <data name="CtxCopyRows" xml:space="preserve">
+        <value>Copy rows</value>
+    </data>
+    <data name="CtxDeleteRows" xml:space="preserve">
+        <value>Delete rows</value>
+    </data>
+    <data name="CtxOpenFile" xml:space="preserve">
+        <value>Open file</value>
+    </data>
+    <data name="CtxExportCSV" xml:space="preserve">
+        <value>Export to CSV</value>
+    </data>
+    <data name="StatusWaiting" xml:space="preserve">
+        <value>waiting</value>
+    </data>
+    <data name="StatusProcessing" xml:space="preserve">
+        <value>processing...</value>
+    </data>
+    <data name="StatusEmpty" xml:space="preserve">
+        <value>empty</value>
+    </data>
+    <data name="DlgSelectFiles" xml:space="preserve">
+        <value>Select files</value>
+    </data>
+    <data name="DlgExportTitle" xml:space="preserve">
+        <value>Export to CSV</value>
+    </data>
+    <data name="DlgFilterCSV" xml:space="preserve">
+        <value>CSV files (*.csv)|*.csv|All files (*.*)|*.*</value>
+    </data>
+    <data name="DlgFolderTitle" xml:space="preserve">
+        <value>Select Folder</value>
+    </data>
+    <data name="DlgFolderOkBtn" xml:space="preserve">
+        <value>Select</value>
+    </data>
+    <data name="DlgFolderNameLabel" xml:space="preserve">
+        <value>Folder:</value>
+    </data>
+    <data name="ErrDirAccess" xml:space="preserve">
+        <value>Error accessing directory {0}: {1}</value>
+    </data>
+    <data name="LabelItem" xml:space="preserve">
+        <value>item:</value>
+    </data>
+    <data name="LabelTotal" xml:space="preserve">
+        <value>total:</value>
+    </data>
+    <data name="WindowTitle" xml:space="preserve">
+        <value>MD5 Hash Changer V1.4.2</value>
+    </data>
+</root>

@@ -1,4 +1,5 @@
-﻿namespace MD5_Hash_Changer.Properties {
+﻿namespace MD5_Hash_Changer.Properties
+{
     using System;
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

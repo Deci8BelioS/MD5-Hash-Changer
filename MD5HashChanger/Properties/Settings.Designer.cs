@@ -1,4 +1,5 @@
-﻿namespace MD5_Hash_Changer.Properties {
+﻿namespace MD5_Hash_Changer.Propertiesç
+{
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.8.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
