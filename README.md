@@ -1,4 +1,4 @@
-# MD5 Hash Changer v1.4.1
+# MD5 Hash Changer v1.4.2
 <div align="right">
 
 [**Spanish**](README_ES.md)
@@ -21,6 +21,7 @@
 | **Multi-language** | ES/EN + auto-detects system language |
 | **Rounded ComboBox** | Language selector with dark style |
 | **Multilingual Support** | Spanish and English available |
+| **New logic in MD5** | Change now calculates the bytes to write at the end of the file |
 
 > **💡 Note**: Removed MD5 calculation on drag/add. Large series took **minutes**. Now computes only on "Start MD5 Change".
 
@@ -46,7 +47,7 @@
 [![Latest Release](https://img.shields.io/github/v/release/Deci8BelioS/MD5-Hash-Changer?color=brightgreen)](https://github.com/Deci8BelioS/MD5-Hash-Changer/releases/latest)
 
 ## 🎮 Quick Start
-1. **Download** [MD5_Hash_Changer.exe](https://github.com/Deci8BelioS/MD5-Hash-Changer/releases/download/v1.4.1/MD5_Hash_Changer.exe)
+1. **Download** [MD5_Hash_Changer.exe](https://github.com/Deci8BelioS/MD5-Hash-Changer/releases/download/1.4.2/MD5_Hash_Changer.exe)
 2. **Run**
 3. **Drag** files/folders
 4. **Start MD5 Change** → ✅
