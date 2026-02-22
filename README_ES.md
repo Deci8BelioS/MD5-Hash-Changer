@@ -53,7 +53,7 @@
 4. **Iniciar Cambio MD5** → ✅
 
 ## 📁 Fork de
-Basado en [philip47/MD5-Hash-Changer](https://github.com/philip47/MD5-Hash-Changer)
+Basado en [ewwink/MD5-Hash-Changer](https://github.com/ewwink/MD5-Hash-Changer)
 
 ### Changelog anterior
 V1.3 → 
