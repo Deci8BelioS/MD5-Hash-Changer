@@ -53,7 +53,7 @@
 4. **Start MD5 Change** → ✅
 
 ## 📁 Forked from
-Based on [philip47/MD5-Hash-Changer](https://github.com/philip47/MD5-Hash-Changer)
+Based on [ewwink/MD5-Hash-Changer](https://github.com/ewwink/MD5-Hash-Changer)
 
 ### Previous Changelog
 **V1.3 →**
