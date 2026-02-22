@@ -181,6 +181,17 @@ public partial class MainForm : Form
         for (int i = 0; i < names.Length; i++)
         {
             if (!running) break;
+            bool alreadyDone = false;
+            this.Invoke(() => 
+            {
+                var currentStatus = dataGridFileMD5.Rows[i].Cells[3].Value?.ToString();
+                if (currentStatus == "OK") alreadyDone = true;
+            });
+            if (alreadyDone) 
+            {
+                this.Invoke(() => UpdateProgress(i + 1));
+                continue;
+            }
             this.Invoke(() => dataGridFileMD5.Rows[i].Cells[3].Value = Locale.StatusProcessing);
             try
             {
